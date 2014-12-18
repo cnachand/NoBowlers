@@ -17,6 +17,26 @@ var WeBowl = function(){
 	};
 };
 
+WeBowl.prototype.currentFrame = function() {
+	var currentFrame = 0;
+	for (var i = 0; i <= this.rolls.length; i++) {
+		if (this.rolls[i] == 10)
+			currentFrame++;
+		else {
+			if (this.rolls[i]) {
+				i++;
+				currentFrame++;
+			}
+		}
+	};
+
+	return currentFrame;
+};
+WeBowl.prototype.isFirstBallForFrame = function() {
+	// TODO: Need to make sure this actually works.
+	return this.rolls % 2 == 0;
+};
+
 WeBowl.prototype.roll = function(pins){
 	this.rolls.push(pins);
 };

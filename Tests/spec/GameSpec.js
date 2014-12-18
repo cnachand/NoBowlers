@@ -53,6 +53,30 @@ describe("WeBowl Game", function(){
 		expect(game.score()).toBe(300);
 	});
 
+	it("Can get the current frame of 3", function() {
+		game.roll(10);
+		game.roll(7);
+		game.roll(3);
+		game.roll(4);
+
+		expect(game.currentFrame()).toBe(3);
+	});
+
+	it("Can get the current frame of 7", function() {
+		game.roll(10);	//1
+		game.roll(7);	//2
+		game.roll(3);
+		game.roll(4);	//3
+		game.roll(3);
+		game.roll(10);	//4
+		game.roll(1);	//5
+		game.roll(1);
+		game.roll(10);	//6
+		game.roll(5);	//7
+
+		expect(game.currentFrame()).toBe(7);
+	});
+
 	var rollMany = function(pins, rolls){
 		for(var i = 0; i < rolls; i++){
 			game.roll(pins);
