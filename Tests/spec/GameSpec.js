@@ -7,7 +7,7 @@ describe("Testing Jasmine", function() {
   });
 });
 
-describe("WeBowl", function(){
+describe("WeBowl Game", function(){
 	var game;
 	
 	beforeEach(function(){
@@ -20,17 +20,42 @@ describe("WeBowl", function(){
 	
 	it("Can throw gutter game", function(){
 		//var game = new WeBowl();
-		for (var i = 0; i < 20; i++){
-			game.roll(0);
-		}
+		// for (var i = 0; i < 20; i++){
+			// game.roll(0);
+		// }
+		rollMany(0,20);
 		expect(game.score()).toBe(0);
 	});
 	
 	it("Can throw all ones", function(){
 		//var game = new WeBowl();
-		for(var i = 0; i < 20; i++){
-			game.roll(1);
-		}
+		// for(var i = 0; i < 20; i++){
+			// //game.roll(1);
+		// }
+		rollMany(1,20);
 		expect(game.score()).toBe(20);
 	});
+
+	it("Can throw a strike", function(){
+		game.roll(10);
+		rollMany(0,18);
+		expect(game.score()).toBe(10);
+	});
+	
+	it("Can throw various frames", function(){
+		game.roll(10);
+		rollMany(1,18);
+		expect(game.score()).toBe(30);
+	});
+	
+	it("Can throw perfect game", function (){
+		rollMany(10,12);
+		expect(game.score()).toBe(300);
+	});
+
+	var rollMany = function(pins, rolls){
+		for(var i = 0; i < rolls; i++){
+			game.roll(pins);
+		}
+	};
 });
