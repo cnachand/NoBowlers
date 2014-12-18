@@ -37,3 +37,13 @@ position:relative;
 font-size:18px;
 color:black;
 }
+
+.message {
+  padding: 3px;
+}
+
+.play-again {
+  margin-top: 20px;
+  padding: 3px;
+  font-size: 20px;
+}

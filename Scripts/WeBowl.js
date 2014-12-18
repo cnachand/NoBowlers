@@ -133,3 +133,33 @@ WeBowl.prototype.score2 = function() {
 
 	return score;
 };
+
+WeBowl.prototype.finishGame = function() {
+	var score = this.score() || 0;
+	var dialogHtml = getDialog();
+
+	dialogHtml = dialogHtml.replace(/{score}/g, score);
+
+	var dialog = $(dialogHtml).dialog({
+		title: "WeBowl Bowling!",
+		width: 500,
+		modal: true,
+		buttons: {
+			"Yes": function() {
+				$(this).dialog("close");
+				window.location.href = "index.html";
+			},
+			"No": function() {
+				$(this).dialog("close");
+				alert("Thanks for playing, enjoy the rest of your day!");
+				window.close();
+			}
+		}
+	});
+
+	dialog.show();
+
+	function getDialog() {
+		return '<div id="finishGameDialog" style="display:none;"><div class="message">Great job, you had a final score of: {score}</div><div class="play-again">Would you like to play again?</div></div>';
+	};
+}

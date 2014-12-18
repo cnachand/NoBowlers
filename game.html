@@ -1,12 +1,15 @@
 <html>
 <head>
   <title>NoBowlers (WeBowler game)</title>
-  <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
-  
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+  <link rel="stylesheet" href="theme.css" />
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+  <script src="Scripts/WeBowl.js"></script>
+  <script src="Scripts/Game.js"></script>
 </head>
-<body>
+<body class="Main">
 This is the shell for the game
 <br />
 Needed sections:
@@ -15,6 +18,9 @@ Needed sections:
 2) Bowling lane<br />
 3) Arrow selection<br />
 4) "Throw"
+
+<br/>
+<button id="exitGame" class="menuButton" onclick="weBowl.finishGame($('#finishGameDialog'));">Exit Game</button>
 
 </body>
 </html>
