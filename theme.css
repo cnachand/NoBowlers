@@ -11,7 +11,8 @@
   left: 0; 
   min-width: 100%;
   min-height: 100%;
-background-image: url("nobowl-back.jpg");
-background-repeat: no-repeat;
-color: white;
+  background-image: url("nobowl-back.jpg");
+  background-repeat: no-repeat;
+  color: white;
+  background-size: 100%;
 }
