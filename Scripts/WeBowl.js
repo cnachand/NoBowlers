@@ -32,10 +32,42 @@ WeBowl.prototype.currentFrame = function() {
 
 	return Math.min(10,currentFrame);
 };
+WeBowl.prototype.jumpToFrame = function(frameNumber) {
+	var currentFrame = 0;
+	if (currentFrame == frameNumber) return 0;
+
+	for (var i = 0; i <= this.rolls.length; i++) {
+		if (this.rolls[i] == 10)
+			currentFrame++;
+		else {
+			if (this.rolls[i]) {
+				i++;
+				currentFrame++;
+			}
+		}
+
+		if (currentFrame == frameNumber) return i;
+	};
+};
+WeBowl.prototype.getLastRoll = function() {
+	return this.rolls[this.rolls.length - 1];
+};
 WeBowl.prototype.isFirstBallForFrame = function() {
 	// TODO: Need to make sure this actually works.
 	return this.rolls % 2 == 0;
 };
+WeBowl.prototype.gameFinished = function() {
+	if (this.rolls.length >= 21) return true;
+
+	var frame10Index = this.jumpToFrame(10);
+	if (frame10Index + 2 == this.rolls.length) return true;
+
+	var roll1 = this.rolls[frame10Index];
+	var roll2 = this.rolls[frame10Index + 1];
+	if (roll1 + roll2 >= 10 && this.rolls[frame10Index + 2]) return true;
+
+	return false;
+}
 
 WeBowl.prototype.roll = function(pins){
 	this.rolls.push(pins);
@@ -185,12 +217,13 @@ WeBowl.prototype.finishGame = function() {
 }
 
 WeBowl.prototype.getRollResult = function() {
-	float maxVal = 0;
-	if(this.rolls.isFirstBallForFrame)
+	var maxVal = 0;
+
+	if(this.isFirstBallForFrame())
 		maxVal = 10;	
 	else
-		maxVal = 10-rolls[rolls.length - 1];
+		maxVal = 10-this.rolls[this.rolls.length - 1];
     
 	return Math.floor( Math.random() * ( 1 + maxVal) );
-    }
+}
 
