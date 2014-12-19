@@ -183,3 +183,13 @@ WeBowl.prototype.finishGame = function() {
 		return '<div id="finishGameDialog" style="display:none;"><div class="message">Great job, you had a final score of: {score}</div><div class="play-again">Would you like to play again?</div></div>';
 	};
 }
+
+WeBowl.prototype.getRollResult = function(rolls) {
+	float maxVal = 0;
+	if(this.rolls.isFirstBallForFrame)
+		maxVal = 10;	
+	else
+        return Math.floor( Math.random() * ( 1 + maxVal) );
+	return maxVal;
+    }
+
