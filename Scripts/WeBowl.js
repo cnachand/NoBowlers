@@ -184,12 +184,13 @@ WeBowl.prototype.finishGame = function() {
 	};
 }
 
-WeBowl.prototype.getRollResult = function(rolls) {
+WeBowl.prototype.getRollResult = function() {
 	float maxVal = 0;
 	if(this.rolls.isFirstBallForFrame)
 		maxVal = 10;	
 	else
-        return Math.floor( Math.random() * ( 1 + maxVal) );
-	return maxVal;
+		maxVal = 10-rolls[rolls.length - 1];
+    
+	return Math.floor( Math.random() * ( 1 + maxVal) );
     }
 
