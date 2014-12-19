@@ -30,7 +30,7 @@ WeBowl.prototype.currentFrame = function() {
 		}
 	};
 
-	return currentFrame;
+	return Math.min(10,currentFrame);
 };
 WeBowl.prototype.isFirstBallForFrame = function() {
 	// TODO: Need to make sure this actually works.
